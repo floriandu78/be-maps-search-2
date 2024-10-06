@@ -16,15 +16,15 @@ app.get<
 >('/getAutoCompleteDetails', async (req,res) => { 
   const address = req.query.address
   if (typeof address !== 'string') {
-    throw new Error('Adress format incompatible')
+    throw new Error('Invalid address format')
   }
 
   const data = await getAutoCompleteDetails(address)
-  
+
   res.send({
     data
   });
-  
+
   return;
 })
 
