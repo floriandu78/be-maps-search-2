@@ -1,5 +1,5 @@
 import { Place } from '../models';
-import { getPlaceByID, getPlaceAutocomplete } from '../utils/';
+import { getPlaceAutocomplete } from '../utils/';
 
 
 /**
@@ -12,19 +12,4 @@ import { getPlaceByID, getPlaceAutocomplete } from '../utils/';
  */
 export const getAutoCompleteDetails = async (
     address: string
-): Promise<Place[]> => {
-    const autoCompleteResults = await getPlaceAutocomplete(address);
-
-    const autoCompleteResultsDetails = (await Promise.all(
-        autoCompleteResults.map(async ({ placeId }) => {
-            try {
-                const place = await getPlaceByID(placeId)
-                return place
-            } catch (error) {
-                return null
-            }
-        })
-    )).filter((place) => !!place);
-
-    return autoCompleteResultsDetails
-}
+): Promise<Place[]> => getPlaceAutocomplete(address)

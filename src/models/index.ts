@@ -7,7 +7,8 @@ export interface GetPlaceResult {
 }
 
 export interface AutoCompleteResult {
-    id: string
+    id: string;
+    address: Place;
 }
 
 export interface GetPlaceAutoComplete {

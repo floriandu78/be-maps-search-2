@@ -71,5 +71,6 @@ IMPROVEMENTS
 BUG FOUND
 =============
 
+- Some streetNumber are undefined, the types should be `streetNumber?: string` and the test should allow an undefined value.
 - The place API returns the same address (in Eden, NSW) whatever placeId is passed to the endpoint. My wife is actually from Eden, is it a coincidence or a sign of god? Who knows :p
 

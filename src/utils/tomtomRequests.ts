@@ -16,13 +16,15 @@ import { apiKey } from '../config';
  * 3. Maps the response data into an array of objects, each containing a `placeId`.
  * 4. Returns the array of objects as the result.
  */
-export const getPlaceAutocomplete = async (address: string): Promise<GetPlaceAutoComplete[]> => {
+export const getPlaceAutocomplete = async (
+    address: string
+): Promise<Place[]> => {
     if (!address) {
         throw new Error();
     }
 
     try {
-        const autocomplete: AxiosResponse<TomTomApiResponse<AutoCompleteResult>> = 
+        const autocomplete = 
             await axios.get<TomTomApiResponse<AutoCompleteResult>>(`https://api.tomtom.com/search/2/search/${address}.json'`, {
                 params: {
                     key: apiKey,
@@ -30,9 +32,13 @@ export const getPlaceAutocomplete = async (address: string): Promise<GetPlaceAut
                     countrySet: 'AU'
                 }
             });
-        return autocomplete.data.results.map((result: any) => {
+
+        return autocomplete.data.results.map((place: AutoCompleteResult) => {
             return {
-                placeId: result.id,
+                ...place.address,
+                placeId: place.id,
+                streetNumber: place.address.streetNumber ?? '',
+                
             }
         });
     } catch (error) {
@@ -43,6 +49,7 @@ export const getPlaceAutocomplete = async (address: string): Promise<GetPlaceAut
 
 
 /**
+ * This function has been implemented for testing but is not in use.
  * getPlaceByID - Fetches place details from the TomTom API using a given place ID and returns a formatted Place object.
  *
  * @param {string} placeID - The unique identifier of the place to retrieve details for.
@@ -57,7 +64,7 @@ export const getPlaceAutocomplete = async (address: string): Promise<GetPlaceAut
 export const getPlaceByID = async (
     placeId: string
 ): Promise<Place> =>  {
-    const place: AxiosResponse<TomTomApiResponse<GetPlaceResult>> = 
+    const place = 
         await axios.get<TomTomApiResponse<GetPlaceResult>>('https://api.tomtom.com/search/2/search/place.json', {
             params: {
                 countrySet: 'AU',
