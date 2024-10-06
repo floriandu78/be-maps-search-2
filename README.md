@@ -21,7 +21,13 @@ API Key: Oyb0npJAVdRwDauqpFez7zKCy2euUYql
 
 Install:
 ========
+0. Make sure you use node >= 18 by running `nvm use 18`
 1. yarn install
+
+Run app:
+========
+1. yarn dev
+2. go to `http://localhost:3000/getAutoCompleteDetails?address="Type any address"`
 
 Test:
 =====
