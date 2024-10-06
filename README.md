@@ -65,5 +65,5 @@ IMPROVEMENTS
 BUG FOUND
 =============
 
-- The place API returns the same address whatever placeId is passed to the endpoint. My wife is actually from Eden, is it a coincidence or a sign of god? Who knows :p
+- The place API returns the same address (in Eden, NSW) whatever placeId is passed to the endpoint. My wife is actually from Eden, is it a coincidence or a sign of god? Who knows :p
 
