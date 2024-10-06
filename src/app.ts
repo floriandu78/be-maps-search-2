@@ -9,12 +9,6 @@ const PORT = process.env.PORT || 3000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-
-interface Dog {
-  id: string
-}
-
-
 app.get<
   {},
   { data: Place[] | null},
