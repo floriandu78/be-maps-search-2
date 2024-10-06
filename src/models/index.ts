@@ -11,10 +11,6 @@ export interface AutoCompleteResult {
     address: Place;
 }
 
-export interface GetPlaceAutoComplete {
-    placeId: string
-}
-
 export interface Place {
     countryCode: string;
     freeformAddress: string;

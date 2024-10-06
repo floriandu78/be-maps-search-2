@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios'
-import { AutoCompleteResult, GetPlaceAutoComplete, GetPlaceResult, Place, TomTomApiResponse } from '../models';
+import axios from 'axios'
+import { AutoCompleteResult, GetPlaceResult, Place, TomTomApiResponse } from '../models';
 import { apiKey } from '../config';
 
 
@@ -7,13 +7,12 @@ import { apiKey } from '../config';
  * getPlaceAutocomplete - Fetches autocomplete suggestions from the TomTom API for a given address input.
  *
  * @param {string} address - The partial or complete address to get autocomplete suggestions for.
- * @returns {Promise<GetPlaceAutoComplete[]>} - A promise that resolves to an array of objects, 
- * each containing a `placeId` representing a unique place suggestion.
+ * @returns {Promise<Place[]>} - A promise that resolves to an array of Place.
  *
  * The function performs the following steps:
  * 1. Sends a GET request to the TomTom Autocomplete API with the provided `address`.
  * 2. Receives and processes the autocomplete suggestions from the API response.
- * 3. Maps the response data into an array of objects, each containing a `placeId`.
+ * 3. Maps the response data into an array of objects of type Place.
  * 4. Returns the array of objects as the result.
  */
 export const getPlaceAutocomplete = async (
@@ -37,8 +36,7 @@ export const getPlaceAutocomplete = async (
             return {
                 ...place.address,
                 placeId: place.id,
-                streetNumber: place.address.streetNumber ?? '',
-                
+                streetNumber: place.address.streetNumber ?? '',    
             }
         });
     } catch (error) {
