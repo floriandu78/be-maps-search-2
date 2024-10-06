@@ -15,9 +15,9 @@ export interface GetPlaceAutoComplete {
 }
 
 export interface Place {
-    placeId: string;
-    streetNumber: string;
     countryCode: string;
     freeformAddress: string;
     municipality: string;
+    placeId: string;
+    streetNumber: string;
 }

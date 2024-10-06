@@ -55,13 +55,13 @@ export const getPlaceAutocomplete = async (address: string): Promise<GetPlaceAut
  * 4. Returns the `Place` object as the result.
  */
 export const getPlaceByID = async (
-    placeID: string
+    placeId: string
 ): Promise<Place> =>  {
     const place: AxiosResponse<TomTomApiResponse<GetPlaceResult>> = 
         await axios.get<TomTomApiResponse<GetPlaceResult>>('https://api.tomtom.com/search/2/search/place.json', {
             params: {
                 countrySet: 'AU',
-                entityId: placeID,
+                entityId: placeId,
                 key: apiKey,
             }
         });
@@ -71,7 +71,7 @@ export const getPlaceByID = async (
     return {
         ...result.address, 
         streetNumber: result.address.streetNumber ?? '',
-        placeId: placeID
+        placeId
     };
 }
     
