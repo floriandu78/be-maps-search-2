@@ -1,0 +1,33 @@
+{
+  "name": "@montu/maps-backend-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon src/app.ts",
+    "start": "node dist/app.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^22.7.4",
+    "jest": "^26.6.3",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.21.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
